@@ -9,16 +9,18 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Chrome" />
-                <ResourceDictionary Source="Styles/TextBox" />
-                <ResourceDictionary Source="Styles/TextBlock" />
-                <ResourceDictionary Source="Styles/TreeView" />
+                <ResourceDictionary Source="Styles/Colors.xaml" />
+                <ResourceDictionary Source="Styles/Windows.xaml" />
+                <ResourceDictionary Source="Styles/Buttons.xaml" />
+                <ResourceDictionary Source="Styles/TextBox.xaml" />
+                <ResourceDictionary Source="Styles/TextBlock.xaml" />
+                <ResourceDictionary Source="Styles/TreeView.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <!--  MVVM Base  -->
+            <mvvm:ViewModel x:Key="ViewModel" />
+            <!--  Converters  -->
+            <convert:Text_Color x:Key="text_color" />
         </ResourceDictionary>
-        <!--  MVVM Base  -->
-        <mvvm:ViewModel x:Key="ViewModel" />
-        <!--  Converters  -->
-        <convert:Text_Color x:Key="text_color" />
         <!--  Global styles  -->
     </Application.Resources>
 </Application>

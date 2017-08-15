@@ -9,7 +9,7 @@
     Width="700"
     Height="500"
     Margin="{Binding WindowMargin}"
-    DataContext="{Binding Mode=OneWay, Source={StaticResource ViewModel}}"
+    DataContext="{DynamicResource ViewModel}"
     Icon="Glua.ico"
     Style="{StaticResource {x:Type Window}}"
     WindowStartupLocation="CenterScreen"
@@ -38,7 +38,8 @@
             Grid.Column="1"
             Background="{DynamicResource BackgroundDarkBrush}"
             FlowDirection="RightToLeft"
-            Orientation="Horizontal">
+            Orientation="Horizontal"
+            ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <Button
                 Background="{StaticResource BackgroundRedBrush}"
                 Command="{Binding CloseCommand}"
@@ -64,7 +65,11 @@
             x:Name="FunctionList"
             Grid.Row="1"
             Margin="0,23,0,0"
+            IsTextSearchEnabled="True"
             ItemsSource="{Binding Wiki}">
+            <TreeView.CacheMode>
+                <BitmapCache SnapsToDevicePixels="True" />
+            </TreeView.CacheMode>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Childs}">
                     <TextBlock Foreground="{Binding Side, Converter={StaticResource text_color}}" Text="{Binding Name}" />
@@ -92,5 +97,20 @@
             x:Name="InfoView"
             Grid.Row="1"
             Grid.Column="1" />
+        <TreeView
+            x:Name="FunctionList_Copy"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="65,23,198,0">
+            <TreeViewItem
+                Header="TreeViewItem"
+                IsExpanded="True"
+                IsSelected="True">
+                <TreeViewItem Header="TreeViewItem" IsSelected="True" />
+            </TreeViewItem>
+            <TreeViewItem Header="10">
+                <TreeViewItem Header="20" />
+            </TreeViewItem>
+        </TreeView>
     </Grid>
 </Window>

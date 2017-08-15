@@ -18,6 +18,7 @@ namespace GLua.MVVM
         public ViewModel()
         {
             wiki.LoadJsonObj();
+
             closeCommand = new RelayCommand((t) => {
                 Application.Current.Shutdown();
             });
@@ -61,7 +62,11 @@ namespace GLua.MVVM
         public int WindowMargin
         {
             get => WModel.Margin;
-            set => WModel.Margin = value;
+            set
+            {
+                int mrgn = WModel.Margin;
+                SetProperty(ref mrgn,value);
+            }
         }
 
         public List<Function> Wiki {

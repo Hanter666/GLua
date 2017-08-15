@@ -45,7 +45,7 @@ namespace GLua
                         child.Name = element.TextContent;
                         child.Url = element.GetAttribute("href");
                         child.Side = element.ClassName;
-                        f.childs.Add(child);
+                        f.Childs.Add(child);
                         continue;
                     }
                     else
@@ -70,9 +70,9 @@ namespace GLua
                             Name = funcName,
                             Url = BaseUrl + funcUrl
                         };
-                        child.childs.Add(func);
+                        child.Childs.Add(func);
                     }
-                    f.childs.Add(child);
+                    f.Childs.Add(child);
                 }
                 Functions.Add(f);
             }
@@ -122,13 +122,13 @@ namespace GLua
                     {
                         writer.WritePropertyName(root.Name);
                         writer.WriteStartObject();
-                        foreach (Function classes in root.childs)
+                        foreach (Function classes in root.Childs)
                         {
                             writer.WritePropertyName(classes.Name);
                             writer.WriteStartObject();
-                            if (classes.childs.Count > 0)
+                            if (classes.Childs.Count > 0)
                             {
-                                foreach (Function func in classes.childs)
+                                foreach (Function func in classes.Childs)
                                 {
                                     writer.WritePropertyName(func.Name);
                                     writer.WriteStartObject();

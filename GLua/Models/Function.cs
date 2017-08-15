@@ -16,11 +16,6 @@ namespace GLua
         public string[] Args { get; set; }
         public string[] Returns { get; set; }
         public string[] Example { get; set; }
-        public List<Function> childs { get; set; }
-        public Function()
-        {
-            childs = new List<Function>();
-        }
-
+        public List<Function> Childs { get; set; } = new List<Function>();
     }
 }

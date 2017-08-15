@@ -19,7 +19,7 @@
     WindowStyle="None"
     mc:Ignorable="d">
     <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="0" NonClientFrameEdges="Right" />
+        <WindowChrome CaptionHeight="30" GlassFrameThickness="0" />
     </WindowChrome.WindowChrome>
 
     <Grid Background="#FF1E1E1E">

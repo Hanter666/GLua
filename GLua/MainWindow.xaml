@@ -19,7 +19,7 @@
     WindowStyle="None"
     mc:Ignorable="d">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="30" GlassFrameThickness="0" />
+        <WindowChrome CaptionHeight="30" />
     </WindowChrome.WindowChrome>
 
     <Grid Background="#FF1E1E1E">
@@ -29,8 +29,8 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160*" MaxWidth="300" />
-            <ColumnDefinition Width="357*" />
+            <ColumnDefinition Width="100*" MaxWidth="300" />
+            <ColumnDefinition Width="220*" />
         </Grid.ColumnDefinitions>
         <TreeView
             x:Name="FunctionList"
@@ -68,7 +68,7 @@
             Text=""
             TextWrapping="Wrap"
             ToolTip="Search" />
-        <RichTextBox
+        <TextBox
             x:Name="InfoView"
             Grid.Row="1"
             Grid.Column="1"

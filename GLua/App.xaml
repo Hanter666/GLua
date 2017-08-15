@@ -7,33 +7,18 @@
     xmlns:mvvm="clr-namespace:GLua.MVVM"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Chrome" />
+                <ResourceDictionary Source="Styles/TextBox" />
+                <ResourceDictionary Source="Styles/TextBlock" />
+                <ResourceDictionary Source="Styles/TreeView" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
         <!--  MVVM Base  -->
         <mvvm:ViewModel x:Key="ViewModel" />
         <!--  Converters  -->
         <convert:Text_Color x:Key="text_color" />
-        <!--  Chrome  -->
-        <Style TargetType="{x:Type Window}">
-            <Setter Property="WindowChrome.WindowChrome">
-                <Setter.Value>
-                    <WindowChrome
-                        CaptionHeight="15"
-                        CornerRadius="0"
-                        GlassFrameThickness="0,0,0,-1"
-                        NonClientFrameEdges="None"
-                        ResizeBorderThickness="5"
-                        UseAeroCaptionButtons="true" />
-                </Setter.Value>
-            </Setter>
-        </Style>
         <!--  Global styles  -->
-        <Style TargetType="TextBox">
-            <Setter Property="BorderThickness" Value="0" />
-        </Style>
-        <Style TargetType="TreeView">
-            <Setter Property="BorderThickness" Value="0" />
-        </Style>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White" />
-        </Style>
     </Application.Resources>
 </Application>

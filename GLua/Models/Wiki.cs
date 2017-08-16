@@ -9,7 +9,7 @@ using AngleSharp.Parser;
 using AngleSharp;
 using System.Configuration;
 
-namespace GLua
+namespace GLua.Models
 {
     class Wiki
     {
@@ -33,8 +33,10 @@ namespace GLua
             foreach (var roots in content)
             {
                 string root = roots.QuerySelector("h1").TextContent;
-                Function f = new Function();
-                f.Name = root;
+                Function f = new Function()
+                {
+                    Name = root
+                };
                 foreach (var parent in roots.QuerySelectorAll("body > ul > li>ul > li"))
                 {
                     Function child = new Function();

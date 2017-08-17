@@ -66,7 +66,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\Function_Text.cs" />
     <Compile Include="Converters\Text_Color.cs" />
+    <Compile Include="Helpers\DocumentParser.cs" />
+    <Compile Include="Helpers\TasksHelper.cs" />
     <Compile Include="Models\Function.cs" />
     <Compile Include="Models\Windows.cs" />
     <Compile Include="MVVM\ViewModelBase.cs" />
@@ -98,6 +101,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\TextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\RichTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

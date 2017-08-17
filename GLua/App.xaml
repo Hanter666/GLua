@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Styles/Windows.xaml" />
                 <ResourceDictionary Source="Styles/Buttons.xaml" />
                 <ResourceDictionary Source="Styles/TextBox.xaml" />
+                <ResourceDictionary Source="Styles/RichTextBox.xaml" />
                 <ResourceDictionary Source="Styles/TextBlock.xaml" />
                 <ResourceDictionary Source="Styles/TreeView.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -20,6 +21,7 @@
             <mvvm:ViewModel x:Key="ViewModel" />
             <!--  Converters  -->
             <convert:Text_Color x:Key="text_color" />
+            <convert:Function_Text x:Key="function_text" />
         </ResourceDictionary>
         <!--  Global styles  -->
     </Application.Resources>

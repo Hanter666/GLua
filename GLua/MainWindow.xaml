@@ -29,6 +29,7 @@
             <ColumnDefinition Width="100*" MaxWidth="300" />
             <ColumnDefinition Width="220*" />
         </Grid.ColumnDefinitions>
+
         <Label
             Name="Title"
             VerticalContentAlignment="Center"
@@ -40,12 +41,14 @@
             FlowDirection="RightToLeft"
             Orientation="Horizontal"
             ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
             <Button
                 Background="{StaticResource BackgroundRedBrush}"
                 Command="{Binding CloseCommand}"
                 Style="{StaticResource WinStyleButton}">
                 ✕
             </Button>
+
             <Button
                 Width="25"
                 Command="{Binding MaximizeCommand}"
@@ -53,6 +56,7 @@
                 Style="{StaticResource WinStyleButton}">
                 ◪
             </Button>
+
             <Button
                 Width="25"
                 Command="{Binding MinimizeCommand}"
@@ -61,6 +65,7 @@
                 ⎵
             </Button>
         </StackPanel>
+
         <TreeView
             x:Name="FunctionList"
             Grid.Row="1"
@@ -70,6 +75,7 @@
             <TreeView.CacheMode>
                 <BitmapCache SnapsToDevicePixels="True" />
             </TreeView.CacheMode>
+
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Childs}">
                     <TextBlock Foreground="{Binding Side, Converter={StaticResource text_color}}" Text="{Binding Name}" />
@@ -86,6 +92,7 @@
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
+
         <TextBox
             x:Name="SearchBox"
             Grid.Row="1"
@@ -93,21 +100,38 @@
             VerticalAlignment="Top"
             Text=""
             ToolTip="Search" />
-        <TextBox
+        <RichTextBox
             x:Name="InfoView"
             Grid.Row="1"
-            Grid.Column="1" />
+            Grid.Column="1">
+            <FlowDocument>
+                <Paragraph DataContext="{Binding SelectedItem, ElementName=FunctionList, Mode=OneWay}" TextAlignment="Center">
+                    <Run Text="{Binding SelectedItem, ConverterParameter=Name, Converter={StaticResource function_text}, ElementName=FunctionList, Mode=OneWay}" />
+                    <Run Text="{Binding SelectedItem, ConverterParameter=Args, Converter={StaticResource function_text}, ElementName=FunctionList, Mode=OneWay}" />
+                </Paragraph>
+                <Paragraph Padding="20,20,0,0">
+                    Description:
+                    <LineBreak />
+                </Paragraph>
+                <Paragraph Margin="40,0,0,0">da</Paragraph>
+                <Paragraph Padding="20,0,0,0">
+                    Arguments:
+                    <LineBreak />
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
         <TreeView
             x:Name="FunctionList_Copy"
             Grid.Row="1"
             Grid.Column="1"
-            Margin="65,23,198,0">
+            Margin="84,382,243,10">
             <TreeViewItem
                 Header="TreeViewItem"
                 IsExpanded="True"
                 IsSelected="True">
                 <TreeViewItem Header="TreeViewItem" IsSelected="True" />
             </TreeViewItem>
+
             <TreeViewItem Header="10">
                 <TreeViewItem Header="20" />
             </TreeViewItem>

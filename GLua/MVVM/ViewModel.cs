@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using GLua.Models;
+using GLua.Helpers;
+using AngleSharp;
 
 namespace GLua.MVVM
 {
@@ -18,6 +20,7 @@ namespace GLua.MVVM
 
         public ViewModel()
         {
+            //wiki.Get();
             wiki.LoadJsonObj();
 
             closeCommand = new RelayCommand((t) => {

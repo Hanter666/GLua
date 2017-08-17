@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
-using AngleSharp.Parser;
 using AngleSharp;
-using System.Configuration;
+using GLua.Helpers;
 
 namespace GLua.Models
 {
@@ -18,68 +17,12 @@ namespace GLua.Models
         string WikiUpdatePage = "https://gmod.facepunch.com/changes";
         string FileName = "Wiki.json";
         string LastUpdate = Settings.Default.LastUpdate;
-        public List<Function> Functions { get ; set; }
-
-        public Wiki()
-        {
-            Functions = new List<Function>();
-        }
+        public List<Function> Functions { get ; set; } = new List<Function>();
 
         public async void Get()
         {
-            var document = await BrowsingContext.New(Configuration.Default.WithDefaultLoader()).OpenAsync(WikiUrl);
-            var content = document.QuerySelectorAll("body > ul > li");
-
-            foreach (var roots in content)
-            {
-                string root = roots.QuerySelector("h1").TextContent;
-                Function f = new Function()
-                {
-                    Name = root
-                };
-                foreach (var parent in roots.QuerySelectorAll("body > ul > li>ul > li"))
-                {
-                    Function child = new Function();
-                    var element = parent.QuerySelector("h2");
-                    if (element == null)
-                    {
-                        element = parent.QuerySelector("a");
-                        child.Name = element.TextContent;
-                        child.Url = element.GetAttribute("href");
-                        child.Side = element.ClassName;
-                        f.Childs.Add(child);
-                        continue;
-                    }
-                    else
-                    {
-                        child.Name = element.TextContent.Replace("»", "").Trim();
-                        child.Url = BaseUrl + element.GetAttribute("href");
-                    }
-
-                    foreach (var function in parent.QuerySelectorAll("ul>li>a"))
-                    {
-                        string funcName = function.TextContent;
-                        string sideString = function.ClassName;
-                        if (string.IsNullOrWhiteSpace(sideString))
-                        {
-                            sideString = "shared_m";
-                        }
-                        string funcUrl = function.GetAttribute("href");
-
-                        Function func = new Function()
-                        {
-                            Side = sideString,
-                            Name = funcName,
-                            Url = BaseUrl + funcUrl
-                        };
-                        child.Childs.Add(func);
-                    }
-                    f.Childs.Add(child);
-                }
-                Functions.Add(f);
-            }
-            document.Dispose();
-            this.SaveJsonObj();
+            Functions = await DocumentParser.ParseWiki(BaseUrl, WikiUrl);
+            SaveJsonObj();
         }
 
         public void LoadJsonObj()

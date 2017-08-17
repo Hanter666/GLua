@@ -13,8 +13,8 @@ namespace GLua.Models
         public string Descr { get; set; }
         public string Side { get; set; }
         public string Url { get; set; }
-        public string[] Args { get; set; }
-        public string[] Returns { get; set; }
+        public List<string[]> Args { get; set; } = new List<string[]>();
+        public List<string[]> Returns { get; set; } = new List<string[]>();
         public string[] Example { get; set; }
         public List<Function> Childs { get; set; } = new List<Function>();
     }
